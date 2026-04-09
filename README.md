@@ -1,27 +1,33 @@
 # ChaatBazar 🍴
 
-ChaatBazar is a single-brand online street food delivery platform offering samosa, kachori, pani puri, and more. Orders are delivered within a 5 km radius.
+ChaatBazar is an interactive online street food platform dedicated to bringing authentic Indian snacks like samosa, kachori, and pani puri closer to food lovers within a 5 km delivery radius. It helps users discover regional delicacies often overshadowed by global food trends.
 
 ## Tech Stack
-- HTML, CSS, JavaScript
-- JSON for menu data
-- GitHub Pages (optional hosting)
+- HTML, CSS, JavaScript  
+- JSON for menu data storage  
+- GitHub Pages for optional hosting and demo  
 
 ## Features
+
 ### Core Features
-- Homepage with hero section
-- Menu listing with categories
-- Cart & checkout system
-- Delivery info + 5 km location check
-- Responsive mobile-first design
+- Responsive homepage with hero section  
+- Categorized menu listing by states and food types  
+- Cart & checkout system with location-based delivery check (5 km radius)  
+- Mobile-first, responsive design  
 
 ### Contributor Features
-- Daily specials & combo deals
-- Spice level customization
-- Loyalty points / referral system
-- Live order tracking simulation
-- Testimonials & social proof
-- Animations / hover effects
-- Search & filter system
+- Daily specials and combo deals  
+- Spice level customization per order  
+- Loyalty points and referral system  
+- Live order tracking simulation  
+- Testimonials and social proof sections  
+- Smooth animations and hover effects  
+- Search and filter functionality  
 
-## Folder Structure
+## Demo
+[Add link to live demo or screenshots/GIFs here]
+
+## Installation & Setup
+1. Clone this repository  
+   ```bash
+   git clone https://github.com/<your-username>/chaatbazar.git
