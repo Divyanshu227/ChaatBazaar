@@ -668,6 +668,26 @@
   line-height: 1.5;
 }
 
+    /* ===== Contact Section ===== */
+    section.contact {
+      padding: 5rem 1rem 7rem;
+      background: white;
+      color: #3e3e3e;
+      user-select: text;
+    }
+    section.contact .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    section.contact h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #bf360c;
+      margin-bottom: 3rem;
+      text-align: center;
+      user-select: none;
+    }
+
     /* ===== Contact Form ===== */
     form.contact-form {
       max-width: 500px;
@@ -1916,6 +1936,13 @@ body.dark #checkout-btn {
 }
 
 /* Forms */
+body.dark section.contact {
+  background: #252525;
+  color: #eee;
+}
+body.dark section.contact h2 {
+  color: #ff5722;
+}
 body.dark form.contact-form {
   background: #2b2b2b;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
@@ -1925,6 +1952,9 @@ body.dark form.contact-form textarea {
   background: #1e1e1e;
   color: #f5f5f5;
   border-color: #444;
+}
+body.dark form.contact-form label {
+  color: #ffab91;
 }
 body.dark .btn-submit {
   background: #ff5722;
@@ -2158,4 +2188,5 @@ button:disabled {
 .add-btn:disabled:hover {
   transform: none !important;
   opacity: 0.6;
+}
 }
