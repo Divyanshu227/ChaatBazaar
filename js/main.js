@@ -943,6 +943,16 @@ function setupActiveNavbar() {
   });
 }
 
+function updateFavCount() {
+  // Prevent ReferenceError
+  // You can later implement actual favorite count logic here
+  return;
+}
+
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
 // ===== Initialization =====
 
 async function init() {
@@ -962,8 +972,8 @@ async function init() {
 
   if (checkoutBtn) {
     checkoutBtn.addEventListener("click", () => {
-      window.checkout();
-    });
+   window.location.href = "orders.html";
+});
   }
 
   // Load database items asynchronously without blocking UI interactions
