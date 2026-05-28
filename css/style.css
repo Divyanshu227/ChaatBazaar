@@ -135,6 +135,7 @@
       color: #fff;
       letter-spacing: 1px;
       user-select: none;
+      white-space: nowrap;
     }
     nav {
       display: flex;
