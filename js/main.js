@@ -1257,23 +1257,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (savedTheme === "dark") {
     document.body.classList.add("dark");
-    if (toggleBtn) toggleBtn.textContent = "☀️";
+    if (toggleBtn) toggleBtn.setAttribute('aria-pressed', 'true');
   } else {
-    if (toggleBtn) toggleBtn.textContent = "🌙";
+    if (toggleBtn) toggleBtn.setAttribute('aria-pressed', 'false');
   }
 });
 
 // Toggle dark/light mode
 if (toggleBtn) {
   toggleBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-
-    if (document.body.classList.contains("dark")) {
-      toggleBtn.textContent = "☀️";
-      localStorage.setItem("theme", "dark");
-    } else {
-      toggleBtn.textContent = "🌙";
-      localStorage.setItem("theme", "light");
-    }
+    const isDark = document.body.classList.toggle("dark");
+    toggleBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
   });
 }
