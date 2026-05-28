@@ -39,14 +39,180 @@ const cartItemsContainer = document.getElementById("cart-items");
 const cartTotal = document.getElementById("cart-total") || document.getElementById("total-price");
 const checkoutBtn = document.getElementById("checkout-btn");
 
+const couponCodeInput = document.getElementById("coupon-code-input");
+const applyCouponBtn = document.getElementById("apply-coupon-btn");
+const removeCouponBtn = document.getElementById("remove-coupon-btn");
+const couponMessage = document.getElementById("coupon-message");
+const couponSubtotalEl = document.getElementById("coupon-subtotal");
+const couponDiscountEl = document.getElementById("coupon-discount");
+const couponDiscountRow = document.getElementById("coupon-discount-row");
+const couponGrandTotalEl = document.getElementById("coupon-grand-total");
+const appliedCouponLabel = document.getElementById("applied-coupon-label");
+
+const COUPON_STORAGE_KEY = 'chaatCoupon';
+const coupons = {
+  WELCOME10: { type: "percent", value: 10 },
+  SAVE50: { type: "flat", value: 50 }
+};
+let activeCoupon = null;
+
 // Cart is managed by CartManager - initialized in main startup
 
 function formatPrice(price) {
   return `₹${price}`;
 }
 
-// ===== Fuzzy Match & Highlighter Utilities =====
+function getCartSubtotal() {
+  return cart.reduce((sum, ci) => sum + ci.item.price * ci.quantity, 0);
+}
 
+function loadCouponFromStorage() {
+  const stored = localStorage.getItem(COUPON_STORAGE_KEY);
+  if (!stored) return null;
+
+  try {
+    const data = JSON.parse(stored);
+    if (!data || !data.code) return null;
+
+    const code = String(data.code).trim().toUpperCase();
+    const coupon = coupons[code];
+    if (!coupon) {
+      localStorage.removeItem(COUPON_STORAGE_KEY);
+      return null;
+    }
+
+    activeCoupon = { code, ...coupon };
+    return activeCoupon;
+  } catch (error) {
+    localStorage.removeItem(COUPON_STORAGE_KEY);
+    return null;
+  }
+}
+
+function saveCouponToStorage() {
+  if (activeCoupon) {
+    localStorage.setItem(COUPON_STORAGE_KEY, JSON.stringify({ code: activeCoupon.code, appliedAt: Date.now() }));
+  } else {
+    localStorage.removeItem(COUPON_STORAGE_KEY);
+  }
+}
+
+function validateCouponCode(input) {
+  const code = String(input || '').trim().toUpperCase();
+
+  if (!code) {
+    return { valid: false, message: 'Enter a coupon code.' };
+  }
+
+  const coupon = coupons[code];
+  if (!coupon) {
+    return { valid: false, message: 'Invalid or expired coupon.' };
+  }
+
+  return { valid: true, code, coupon };
+}
+
+function calculateCouponDiscount(subtotal) {
+  if (!activeCoupon) return 0;
+
+  if (activeCoupon.type === 'percent') {
+    return Math.min(Math.round((subtotal * activeCoupon.value) / 100), subtotal);
+  }
+
+  if (activeCoupon.type === 'flat') {
+    return Math.min(activeCoupon.value, subtotal);
+  }
+
+  return 0;
+}
+
+function showCouponMessage(message, type = 'success') {
+  if (couponMessage) {
+    couponMessage.textContent = message;
+    couponMessage.classList.toggle('success', type === 'success');
+    couponMessage.classList.toggle('error', type === 'error');
+  }
+
+  showToast(type === 'success' ? `✅ ${message}` : `⚠️ ${message}`);
+}
+
+function updateCartSummary() {
+  const subtotal = getCartSubtotal();
+  const discount = calculateCouponDiscount(subtotal);
+  const total = Math.max(subtotal - discount, 0);
+
+  if (couponSubtotalEl) couponSubtotalEl.textContent = formatPrice(subtotal);
+  if (couponDiscountEl) couponDiscountEl.textContent = `- ${formatPrice(discount)}`;
+  if (couponDiscountRow) couponDiscountRow.style.display = discount > 0 ? 'flex' : 'none';
+  if (couponGrandTotalEl) {
+    couponGrandTotalEl.textContent = formatPrice(total);
+  } else if (cartTotal) {
+    cartTotal.textContent = `Total: ${formatPrice(total)}`;
+  }
+  if (appliedCouponLabel) appliedCouponLabel.textContent = activeCoupon ? `Coupon applied: ${activeCoupon.code}` : '';
+
+  if (checkoutBtn) checkoutBtn.disabled = cart.length === 0;
+}
+
+function applyCouponCode() {
+  const result = validateCouponCode(couponCodeInput ? couponCodeInput.value : '');
+
+  if (!result.valid) {
+    activeCoupon = null;
+    saveCouponToStorage();
+    showCouponMessage(result.message, 'error');
+    updateCartSummary();
+    return false;
+  }
+
+  activeCoupon = { code: result.code, ...result.coupon };
+  saveCouponToStorage();
+  showCouponMessage(`${result.code} applied!`, 'success');
+  if (removeCouponBtn) removeCouponBtn.style.display = 'inline-flex';
+  updateCartSummary();
+  return true;
+}
+
+function removeCoupon() {
+  activeCoupon = null;
+  saveCouponToStorage();
+
+  if (couponCodeInput) couponCodeInput.value = '';
+  if (removeCouponBtn) removeCouponBtn.style.display = 'none';
+  showCouponMessage('Coupon removed.', 'success');
+  updateCartSummary();
+}
+
+function setupCouponListeners() {
+  if (applyCouponBtn) {
+    applyCouponBtn.addEventListener('click', applyCouponCode);
+  }
+
+  if (couponCodeInput) {
+    couponCodeInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        applyCouponCode();
+      }
+    });
+  }
+
+  if (removeCouponBtn) {
+    removeCouponBtn.addEventListener('click', removeCoupon);
+  }
+
+  if (loadCouponFromStorage() && couponCodeInput) {
+    couponCodeInput.value = activeCoupon.code;
+  }
+
+  if (activeCoupon && removeCouponBtn) {
+    removeCouponBtn.style.display = 'inline-flex';
+  }
+
+  updateCartSummary();
+}
+
+// ===== Fuzzy Match & Highlighter Utilities =====
 function fuzzyMatch(target, query) {
   if (!target || !query) return false;
   const t = target.toLowerCase();
@@ -268,6 +434,7 @@ function renderCart() {
          </p>`;
       if (checkoutBtn) checkoutBtn.disabled = true;
       if (cartTotal) cartTotal.textContent = "Total: ₹0";
+      updateCartSummary();
       return;
     }
 
@@ -313,22 +480,17 @@ function renderCart() {
       const removeBtn = cartItem.querySelector(".cart-item-remove");
       if (removeBtn) {
         removeBtn.addEventListener("click", () => {
-          cart = cart.filter(ci => ci.item.id !== item.id);
+          cartManager.removeItem(item.id);
           updateCartCount();
-  updateFavCount();
+          updateFavCount();
           renderCart();
-          saveCart();
         });
       }
 
       cartItemsContainer.appendChild(cartItem);
     });
 
-    const total = cart.reduce(
-      (sum, ci) => sum + ci.item.price * ci.quantity,
-      0
-    );
-    if (cartTotal) cartTotal.textContent = `Total: ${formatPrice(total)}`;
+    updateCartSummary();
     if (checkoutBtn) checkoutBtn.disabled = false;
 
   }, 600);
@@ -492,6 +654,10 @@ window.checkout = async function() {
     return;
   }
 
+  const subtotal = getCartSubtotal();
+  const discount = calculateCouponDiscount(subtotal);
+  const totalAmount = Math.max(subtotal - discount, 0);
+
   const newOrder = {
     id: "CB-" + Math.floor(100000 + Math.random() * 900000),
     date: new Date().toLocaleDateString(undefined, {
@@ -500,7 +666,9 @@ window.checkout = async function() {
     }),
     timestamp: Date.now(),
     items: JSON.parse(JSON.stringify(cart)),
-    total: cart.reduce((sum, ci) => sum + ci.item.price * ci.quantity, 0),
+    total: totalAmount,
+    discount,
+    coupon: activeCoupon?.code || null,
     status: "Pending",
     deliveryAddress: {
       latitude: validationResult.userLocation.latitude,
@@ -582,7 +750,6 @@ function addToCart(id) {
   updateCartCount();
   updateFavCount();
   renderCart();
-  saveCart();
   showToast(`🛒 ${item.name} added to cart`);
   if (cartCount) {
   cartCount.classList.add("cart-bounce");
@@ -605,16 +772,10 @@ function removeFromCart(id) {
 
   const removedItem = cart[cartIndex].item;
 
-  if (cart[cartIndex].quantity > 1) {
-    cart[cartIndex].quantity--;
-  } else {
-    cartManager.removeItem(id);
-  }
-
+  cartManager.decreaseQuantity(id);
   updateCartCount();
   updateFavCount();
   renderCart();
-  saveCart();
 
   showToast(`🗑️ ${removedItem.name} removed from cart`);
 }
@@ -952,6 +1113,7 @@ async function init() {
   // Bind interactive UI listeners immediately for instant input responsiveness (high INP)
   setupCartToggle();
   setupFilterButtons();
+  setupCouponListeners();
   setupOrderNowScroll();
   setupSearchSuggestions();
   setupSearch();
