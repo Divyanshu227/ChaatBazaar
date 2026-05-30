@@ -796,22 +796,46 @@ window.checkout = async function () {
 
   const validationResult = await validateDeliveryLocation();
 
-  if (!validationResult.valid) {
-    alert(validationResult.error);
-    return false;
+ if (!validationResult.valid) {
+
+  // Save delivery failure info
+  localStorage.setItem(
+    "deliveryError",
+    JSON.stringify({
+      error: validationResult.error,
+      distance: validationResult.distance,
+      restaurantLocation: validationResult.restaurantLocation
+    })
+  );
+
+  // Still allow redirect to orders page
+  return {
+    deliveryAvailable: false
+  };
+}
+
+  const subtotal = getCartSubtotal();
+  const couponDiscount = calculateCouponDiscount(subtotal);
+  const subtotalAfterCoupon = Math.max(subtotal - couponDiscount, 0);
+
+  let pointsDiscount = 0;
+  let pointsRedeemed = 0;
+
+  if (loyaltyPointsApplied && typeof loyalty !== 'undefined') {
+    const balance = loyalty.getBalance();
+    pointsRedeemed = Math.min(balance, subtotalAfterCoupon);
+    pointsDiscount = pointsRedeemed; // 1 point = ₹1 discount
+    loyalty.redeemPoints(pointsRedeemed);
   }
 
-  const finalTotal = subtotal - discount;
+  const finalTotal = Math.max(subtotalAfterCoupon - pointsDiscount, 0);
+  const totalDiscount = couponDiscount + pointsDiscount;
 
   // Award points on final total paid (10 points per ₹100 spent)
   let pointsEarned = 0;
   if (typeof loyalty !== 'undefined') {
     pointsEarned = loyalty.awardPoints(finalTotal);
   }
-
-  const subtotal = getCartSubtotal();
-  const discount = calculateCouponDiscount(subtotal);
-  const totalAmount = Math.max(subtotal - discount, 0);
 
   const newOrder = {
     id: "CB-" + Math.floor(100000 + Math.random() * 900000),
@@ -821,14 +845,12 @@ window.checkout = async function () {
     }),
     timestamp: Date.now(),
     items: JSON.parse(JSON.stringify(cart)),
-    total: totalAmount,
-    discount,
+    total: finalTotal,
+    discount: totalDiscount,
     coupon: activeCoupon?.code || null,
     subtotal: subtotal,
-    discount: discount,
     pointsRedeemed: pointsRedeemed,
     pointsEarned: pointsEarned,
-    total: finalTotal,
     status: "Pending",
     deliveryAddress: {
       latitude: validationResult.userLocation.latitude,
@@ -1408,4 +1430,41 @@ function showSkeletonCartItems(count = 2) {
   for (let i = 0; i < count; i++) {
     cartItemsContainer.appendChild(createSkeletonCartItem());
   }
+}
+// dark-mode: initialize theme and keep ARIA attributes in sync
+function initThemeToggle() {
+  const toggleBtn = document.getElementById("theme-toggle");
+  const savedTheme = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  // Determine initial theme: saved preference > OS preference > light
+  const useDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+  if (useDark) {
+    document.body.classList.add('dark');
+  } else {
+    document.body.classList.remove('dark');
+  }
+
+  // Keep ARIA attributes and label accurate
+  if (toggleBtn) {
+    toggleBtn.setAttribute('aria-pressed', useDark ? 'true' : 'false');
+    toggleBtn.setAttribute('aria-label', useDark ? 'Switch to light theme' : 'Switch to dark theme');
+
+    // Remove any duplicate handlers by cloning the node
+    const newToggle = toggleBtn.cloneNode(true);
+    toggleBtn.parentNode.replaceChild(newToggle, toggleBtn);
+
+    newToggle.addEventListener('click', () => {
+      const isDark = document.body.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      newToggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+      newToggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+    });
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initThemeToggle);
+} else {
+  initThemeToggle();
 }
