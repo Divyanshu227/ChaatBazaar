@@ -56,9 +56,17 @@
           <span class="theme-toggle-icon moon-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
           </span>
+          <span class="theme-toggle-thumb"></span>
+        </span>
+      </button>
 
-    </div>
-  </header>
+      <!-- Dynamic auth slot: replaced by js/auth.js based on session state -->
+      <div id="authNavItem" class="auth-nav-item">
+        <a href="login.html" class="login-btn-nav">Login</a>
+      </div>
+    </nav>
+  </div>
+</header>
 
   <section id="live-tracking-section" class="tracking-section-container">
 
@@ -200,28 +208,6 @@
     </div>
   </div>
 
-  <main class="container orders-main-history">
-    <h1 class="orders-history-title">My Orders History</h1>
-
-    <div class="orders-container" id="orders-container" aria-live="polite">
-      <!-- Historical orders will be rendered dynamically -->
-    </div>
-  </main>
-
-  <footer>
-    <div class="social-icons">
-      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i
-          class="fa-brands fa-facebook"></i></a>
-      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i
-          class="fa-brands fa-instagram"></i></a>
-      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i
-          class="fa-brands fa-twitter"></i></a>
-      <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i
-          class="fa-brands fa-github"></i></a>
-    </div>
-    <p>&copy; 2026 ChaatBazar. All rights reserved.</p>
-  </footer>
-
 <main class="container orders-main-history">
   <h1 class="orders-history-title">My Orders History</h1>
   
@@ -294,23 +280,27 @@
 </footer>
 
 
+  <div id="toast-notification" class="toast-notification"></div>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script src="js/live-tracking.js"></script>
+  <script src="js/cart-manager.js"></script>
+  <script src="js/recently-viewed.js"></script>
   <script src="js/delivery-tracker.js"></script>
+  <script src="js/geolocation.js"></script>
+  <script src="js/sanitization.js"></script>
+  <script src="js/loyalty.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/live-tracking.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
 
   <script>
-
     const params = new URLSearchParams(window.location.search);
-
-    const deliveryAvailable =
-      params.get("delivery") === "true";
-
+    const deliveryAvailable = params.get("delivery") === "true";
     if (!deliveryAvailable) {
-      document.getElementById("delivery-coverage-box").style.display = "flex";
+      const covBox = document.getElementById("delivery-coverage-box");
+      if (covBox) covBox.style.display = "flex";
     }
-
   </script>
-
 </body>
-
 </html>
