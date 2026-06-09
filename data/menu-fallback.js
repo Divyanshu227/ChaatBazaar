@@ -1720,13 +1720,13 @@ window.MENU_FALLBACK = [
 },
 {
   "id": "nagaland-003",
-  "name": "Akini Veg Chokibo",
-  "description": "Roasted perilla seeds ground and cooked with mushrooms and herbs",
-  "price": 95,
+  "name": "Rosep Aon",
+  "description": "Traditional Naga dry dish made of mixed seasonal vegetables, bamboo shoots, and green chilies",
+  "price": 85,
   "image": "img/dishes/nagaland/3.jpeg",
   "category": "Snacks",
   "rating": 4.6,
-  "spice": "Medium",
+  "spice": "High",
   "dietary": [
     "vegan",
     "gluten-free"
