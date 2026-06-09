@@ -1258,14 +1258,15 @@
   },
   {
     "id": "madhya-pradesh-005",
-    "name": "Bhopali Gosht Korma",
-    "description": "Slow-cooked rich mutton curry flavored with whole spices and nut paste",
-    "price": 160,
+    "name": "Garadu Chaat",
+    "description": "Crispy deep-fried yam cubes tossed in tangy Indori spices and lemon juice",
+    "price": 45,
     "image": "img/dishes/madhya-pradesh/5.jpeg",
     "category": "Snacks",
     "rating": 4.7,
     "spice": "High",
     "dietary": [
+      "vegan",
       "gluten-free"
     ],
     "available": true,
