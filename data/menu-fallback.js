@@ -1478,300 +1478,314 @@ window.MENU_FALLBACK = [
     "state": "Manipur",
     "featured": false
   },
-  {
-    "id": "meghalaya-001",
-    "name": "Jadoh",
-    "description": "Aromatic red hill rice cooked with pork stock and ginger-garlic paste",
-    "price": 110,
-    "image": "img/dishes/meghalaya/1.jpeg",
-    "category": "Snacks",
-    "rating": 4.8,
-    "spice": "Medium",
-    "dietary": [
-      "gluten-free"
-    ],
-    "available": true,
-    "state": "Meghalaya",
-    "featured": true
-  },
-  {
-    "id": "meghalaya-002",
-    "name": "Doh-Khlieh",
-    "description": "Fresh salad made of finely minced pork, chopped onions, and green chilies",
-    "price": 95,
-    "image": "img/dishes/meghalaya/2.jpeg",
-    "category": "Snacks",
-    "rating": 4.7,
-    "spice": "Medium",
-    "dietary": [
-      "gluten-free"
-    ],
-    "available": true,
-    "state": "Meghalaya",
-    "featured": false
-  },
-  {
-    "id": "meghalaya-003",
-    "name": "Nakham Bitchi",
-    "description": "Hot and sour soup made of sun-dried fish boiled with local greens",
-    "price": 70,
-    "image": "img/dishes/meghalaya/3.jpeg",
-    "category": "Snacks",
-    "rating": 4.5,
-    "spice": "High",
-    "dietary": [
-      "gluten-free"
-    ],
-    "available": true,
-    "state": "Meghalaya",
-    "featured": false
-  },
-  {
-    "id": "meghalaya-004",
-    "name": "Tungrymbai",
-    "description": "Traditional thick fermented soybean paste cooked with spices and sesame",
-    "price": 80,
-    "image": "img/dishes/meghalaya/4.jpeg",
-    "category": "Snacks",
-    "rating": 4.6,
-    "spice": "Medium",
-    "dietary": [
-      "gluten-free"
-    ],
-    "available": true,
-    "state": "Meghalaya",
-    "featured": false
-  },
-  {
-    "id": "meghalaya-005",
-    "name": "Pukhlein",
-    "description": "Sweet crispy fried bread made with rice flour and rich local jaggery",
-    "price": 30,
-    "image": "img/dishes/meghalaya/5.jpeg",
-    "category": "Snacks",
-    "rating": 4.7,
-    "spice": "Low",
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "available": true,
-    "state": "Meghalaya",
-    "featured": true
-  },
-  {
-    "id": "meghalaya-006",
-    "name": "Pumaloi",
-    "description": "Steamed powdered rice cakes cooked in specialized earthen pots",
-    "price": 35,
-    "image": "img/dishes/meghalaya/6.jpeg",
-    "category": "Snacks",
-    "rating": 4.4,
-    "spice": "Low",
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "available": true,
-    "state": "Meghalaya",
-    "featured": false
-  },
-  {
-    "id": "mizoram-001",
-    "name": "Bai",
-    "description": "Nutritious mixed vegetable stew cooked with bamboo shoots and pork lard",
-    "price": 65,
-    "image": "img/dishes/mizoram/1.jpeg",
-    "category": "Snacks",
-    "rating": 4.6,
-    "spice": "Low",
-    "dietary": [
-      "gluten-free"
-    ],
-    "available": true,
-    "state": "Mizoram",
-    "featured": true
-  },
-  {
-    "id": "mizoram-002",
-    "name": "Vawksa Rep",
-    "description": "Spicy stir-fried smoked pork pieces cooked with garlic and fresh leafy greens",
-    "price": 120,
-    "image": "img/dishes/mizoram/2.jpeg",
-    "category": "Snacks",
-    "rating": 4.8,
-    "spice": "High",
-    "dietary": [
-      "gluten-free"
-    ],
-    "available": true,
-    "state": "Mizoram",
-    "featured": false
-  },
-  {
-    "id": "mizoram-003",
-    "name": "Sawhchiar",
-    "description": "Mildly spiced rice dish cooked with tender meat broth",
-    "price": 90,
-    "image": "img/dishes/mizoram/3.jpeg",
-    "category": "Snacks",
-    "rating": 4.5,
-    "spice": "Low",
-    "dietary": [
-      "gluten-free"
-    ],
-    "available": true,
-    "state": "Mizoram",
-    "featured": false
-  },
-  {
-    "id": "mizoram-004",
-    "name": "Arsa Buhchiar",
-    "description": "Comforting chicken and rice porridge boiled with local spices and herbs",
-    "price": 85,
-    "image": "img/dishes/mizoram/4.jpeg",
-    "category": "Snacks",
-    "rating": 4.6,
-    "spice": "Low",
-    "dietary": [
-      "gluten-free"
-    ],
-    "available": true,
-    "state": "Mizoram",
-    "featured": false
-  },
-  {
-    "id": "mizoram-005",
-    "name": "Chhum Han",
-    "description": "Steam cooked fresh seasonal vegetables, completely oil-free",
-    "price": 40,
-    "image": "img/dishes/mizoram/5.jpeg",
-    "category": "Snacks",
-    "rating": 4.3,
-    "spice": "Low",
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "available": true,
-    "state": "Mizoram",
-    "featured": false
-  },
-  {
-    "id": "mizoram-006",
-    "name": "Koat Pitha",
-    "description": "Crispy fried sweet fritters made with rice flour, jaggery, and bananas",
-    "price": 30,
-    "image": "img/dishes/mizoram/6.jpeg",
-    "category": "Snacks",
-    "rating": 4.7,
-    "spice": "Low",
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "available": true,
-    "state": "Mizoram",
-    "featured": true
-  },
-  {
-    "id": "nagaland-001",
-    "name": "Smoked Pork with Bamboo",
-    "description": "Smoked pork slow-cooked with bamboo shoots and hot Naga king chilies",
-    "price": 140,
-    "image": "img/dishes/nagaland/1.jpeg",
-    "category": "Snacks",
-    "rating": 4.9,
-    "spice": "High",
-    "dietary": [
-      "gluten-free"
-    ],
-    "available": true,
-    "state": "Nagaland",
-    "featured": true
-  },
-  {
-    "id": "nagaland-002",
-    "name": "Aikibeye",
-    "description": "Mild and comforting soup made of mustard leaves and local beans",
-    "price": 60,
-    "image": "img/dishes/nagaland/2.jpeg",
-    "category": "Snacks",
-    "rating": 4.5,
-    "spice": "Low",
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "available": true,
-    "state": "Nagaland",
-    "featured": false
-  },
-  {
-    "id": "nagaland-003",
-    "name": "Akini Chokibo",
-    "description": "Roasted perilla seeds ground and cooked with tender snail meat",
-    "price": 110,
-    "image": "img/dishes/nagaland/3.jpeg",
-    "category": "Snacks",
-    "rating": 4.6,
-    "spice": "Medium",
-    "dietary": [
-      "gluten-free"
-    ],
-    "available": true,
-    "state": "Nagaland",
-    "featured": false
-  },
-  {
-    "id": "nagaland-004",
-    "name": "Galho",
-    "description": "Hearty rice and meat porridge cooked with wild green vegetables",
-    "price": 80,
-    "image": "img/dishes/nagaland/4.jpeg",
-    "category": "Snacks",
-    "rating": 4.7,
-    "spice": "Medium",
-    "dietary": [
-      "gluten-free"
-    ],
-    "available": true,
-    "state": "Nagaland",
-    "featured": true
-  },
-  {
-    "id": "nagaland-005",
-    "name": "Hinkejvu",
-    "description": "Simple boiled green vegetables cooked together with a pinch of salt",
-    "price": 50,
-    "image": "img/dishes/nagaland/5.jpeg",
-    "category": "Snacks",
-    "rating": 4.4,
-    "spice": "Low",
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "available": true,
-    "state": "Nagaland",
-    "featured": false
-  },
-  {
-    "id": "nagaland-006",
-    "name": "Fish in Bamboo Tubes",
-    "description": "Fresh river fish marinated in herbs and roasted inside fresh bamboo tubes",
-    "price": 130,
-    "image": "img/dishes/nagaland/6.jpeg",
-    "category": "Snacks",
-    "rating": 4.8,
-    "spice": "Medium",
-    "dietary": [
-      "gluten-free"
-    ],
-    "available": true,
-    "state": "Nagaland",
-    "featured": false
-  },
+{
+  "id": "meghalaya-001",
+  "name": "Jadoh Veg",
+  "description": "Aromatic red hill rice cooked with local vegetables and traditional Khasi spices",
+  "price": 100,
+  "image": "img/dishes/meghalaya/1.jpeg",
+  "category": "Snacks",
+  "rating": 4.7,
+  "spice": "Medium",
+  "dietary": [
+    "vegan",
+    "gluten-free"
+  ],
+  "available": true,
+  "state": "Meghalaya",
+  "featured": true
+},
+{
+  "id": "meghalaya-002",
+  "name": "Khasi Veg Salad",
+  "description": "Fresh local vegetable salad mixed with onions, herbs, and green chilies",
+  "price": 85,
+  "image": "img/dishes/meghalaya/2.jpeg",
+  "category": "Snacks",
+  "rating": 4.6,
+  "spice": "Medium",
+  "dietary": [
+    "vegan",
+    "gluten-free"
+  ],
+  "available": true,
+  "state": "Meghalaya",
+  "featured": false
+},
+{
+  "id": "meghalaya-003",
+  "name": "Veg Nakham Soup",
+  "description": "Hot and sour vegetable soup prepared with local greens and herbs",
+  "price": 65,
+  "image": "img/dishes/meghalaya/3.jpeg",
+  "category": "Snacks",
+  "rating": 4.5,
+  "spice": "High",
+  "dietary": [
+    "vegan",
+    "gluten-free"
+  ],
+  "available": true,
+  "state": "Meghalaya",
+  "featured": false
+},
+{
+  "id": "meghalaya-004",
+  "name": "Tungrymbai",
+  "description": "Traditional thick fermented soybean paste cooked with spices and sesame",
+  "price": 80,
+  "image": "img/dishes/meghalaya/4.jpeg",
+  "category": "Snacks",
+  "rating": 4.6,
+  "spice": "Medium",
+  "dietary": [
+    "vegan",
+    "gluten-free"
+  ],
+  "available": true,
+  "state": "Meghalaya",
+  "featured": false
+},
+{
+  "id": "meghalaya-005",
+  "name": "Pukhlein",
+  "description": "Sweet crispy fried bread made with rice flour and rich local jaggery",
+  "price": 30,
+  "image": "img/dishes/meghalaya/5.jpeg",
+  "category": "Snacks",
+  "rating": 4.7,
+  "spice": "Low",
+  "dietary": [
+    "vegan",
+    "gluten-free"
+  ],
+  "available": true,
+  "state": "Meghalaya",
+  "featured": true
+},
+{
+  "id": "meghalaya-006",
+  "name": "Pumaloi",
+  "description": "Steamed powdered rice cakes cooked in specialized earthen pots",
+  "price": 35,
+  "image": "img/dishes/meghalaya/6.jpeg",
+  "category": "Snacks",
+  "rating": 4.4,
+  "spice": "Low",
+  "dietary": [
+    "vegan",
+    "gluten-free"
+  ],
+  "available": true,
+  "state": "Meghalaya",
+  "featured": false
+},
+
+{
+  "id": "mizoram-001",
+  "name": "Bai",
+  "description": "Nutritious mixed vegetable stew cooked with bamboo shoots and local herbs",
+  "price": 65,
+  "image": "img/dishes/mizoram/1.jpeg",
+  "category": "Snacks",
+  "rating": 4.6,
+  "spice": "Low",
+  "dietary": [
+    "vegan",
+    "gluten-free"
+  ],
+  "available": true,
+  "state": "Mizoram",
+  "featured": true
+},
+{
+  "id": "mizoram-002",
+  "name": "Vawksa Veg Rep",
+  "description": "Spicy stir-fried smoked vegetables cooked with garlic and leafy greens",
+  "price": 95,
+  "image": "img/dishes/mizoram/2.jpeg",
+  "category": "Snacks",
+  "rating": 4.7,
+  "spice": "High",
+  "dietary": [
+    "vegan",
+    "gluten-free"
+  ],
+  "available": true,
+  "state": "Mizoram",
+  "featured": false
+},
+{
+  "id": "mizoram-003",
+  "name": "Sawhchiar Veg",
+  "description": "Mildly spiced rice dish cooked with seasonal vegetables and herbs",
+  "price": 80,
+  "image": "img/dishes/mizoram/3.jpeg",
+  "category": "Snacks",
+  "rating": 4.5,
+  "spice": "Low",
+  "dietary": [
+    "vegan",
+    "gluten-free"
+  ],
+  "available": true,
+  "state": "Mizoram",
+  "featured": false
+},
+{
+  "id": "mizoram-004",
+  "name": "Veg Buhchiar",
+  "description": "Comforting vegetable and rice porridge boiled with local spices and herbs",
+  "price": 75,
+  "image": "img/dishes/mizoram/4.jpeg",
+  "category": "Snacks",
+  "rating": 4.5,
+  "spice": "Low",
+  "dietary": [
+    "vegan",
+    "gluten-free"
+  ],
+  "available": true,
+  "state": "Mizoram",
+  "featured": false
+},
+{
+  "id": "mizoram-005",
+  "name": "Chhum Han",
+  "description": "Steam cooked fresh seasonal vegetables, completely oil-free",
+  "price": 40,
+  "image": "img/dishes/mizoram/5.jpeg",
+  "category": "Snacks",
+  "rating": 4.3,
+  "spice": "Low",
+  "dietary": [
+    "vegan",
+    "gluten-free"
+  ],
+  "available": true,
+  "state": "Mizoram",
+  "featured": false
+},
+{
+  "id": "mizoram-006",
+  "name": "Koat Pitha",
+  "description": "Crispy fried sweet fritters made with rice flour, jaggery, and bananas",
+  "price": 30,
+  "image": "img/dishes/mizoram/6.jpeg",
+  "category": "Snacks",
+  "rating": 4.7,
+  "spice": "Low",
+  "dietary": [
+    "vegan",
+    "gluten-free"
+  ],
+  "available": true,
+  "state": "Mizoram",
+  "featured": true
+},
+
+{
+  "id": "nagaland-001",
+  "name": "Smoked Bamboo Curry",
+  "description": "Smoked bamboo shoots slow-cooked with Naga spices and king chilies",
+  "price": 110,
+  "image": "img/dishes/nagaland/1.jpeg",
+  "category": "Snacks",
+  "rating": 4.8,
+  "spice": "High",
+  "dietary": [
+    "vegan",
+    "gluten-free"
+  ],
+  "available": true,
+  "state": "Nagaland",
+  "featured": true
+},
+{
+  "id": "nagaland-002",
+  "name": "Aikibeye",
+  "description": "Mild and comforting soup made of mustard leaves and local beans",
+  "price": 60,
+  "image": "img/dishes/nagaland/2.jpeg",
+  "category": "Snacks",
+  "rating": 4.5,
+  "spice": "Low",
+  "dietary": [
+    "vegan",
+    "gluten-free"
+  ],
+  "available": true,
+  "state": "Nagaland",
+  "featured": false
+},
+{
+  "id": "nagaland-003",
+  "name": "Akini Veg Chokibo",
+  "description": "Roasted perilla seeds ground and cooked with mushrooms and herbs",
+  "price": 95,
+  "image": "img/dishes/nagaland/3.jpeg",
+  "category": "Snacks",
+  "rating": 4.6,
+  "spice": "Medium",
+  "dietary": [
+    "vegan",
+    "gluten-free"
+  ],
+  "available": true,
+  "state": "Nagaland",
+  "featured": false
+},
+{
+  "id": "nagaland-004",
+  "name": "Galho",
+  "description": "Hearty rice porridge cooked with wild green vegetables and herbs",
+  "price": 75,
+  "image": "img/dishes/nagaland/4.jpeg",
+  "category": "Snacks",
+  "rating": 4.7,
+  "spice": "Medium",
+  "dietary": [
+    "vegan",
+    "gluten-free"
+  ],
+  "available": true,
+  "state": "Nagaland",
+  "featured": true
+},
+{
+  "id": "nagaland-005",
+  "name": "Hinkejvu",
+  "description": "Simple boiled green vegetables cooked together with a pinch of salt",
+  "price": 50,
+  "image": "img/dishes/nagaland/5.jpeg",
+  "category": "Snacks",
+  "rating": 4.4,
+  "spice": "Low",
+  "dietary": [
+    "vegan",
+    "gluten-free"
+  ],
+  "available": true,
+  "state": "Nagaland",
+  "featured": false
+},
+{
+  "id": "nagaland-006",
+  "name": "Veg Bamboo Roast",
+  "description": "Fresh vegetables marinated in herbs and roasted inside bamboo tubes",
+  "price": 100,
+  "image": "img/dishes/nagaland/6.jpeg",
+  "category": "Snacks",
+  "rating": 4.7,
+  "spice": "Medium",
+  "dietary": [
+    "vegan",
+    "gluten-free"
+  ],
+  "available": true,
+  "state": "Nagaland",
+  "featured": false
+},
   {
     "id": "odisha-001",
     "name": "Rasabali",
